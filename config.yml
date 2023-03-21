@@ -2,7 +2,7 @@ languageCode: en-us
 baseURL: "https://alpertaskiran.github.io"
 title: 21st centuary AI
 paginate: 5
-theme: hugo-PaperMod
+theme: PaperMod
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
