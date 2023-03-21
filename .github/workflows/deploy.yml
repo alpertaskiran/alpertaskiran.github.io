@@ -5,7 +5,7 @@ name: deploy to github pages
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
+      - gh-pages  # Set a branch to deploy
 
 jobs:
   deploy:
