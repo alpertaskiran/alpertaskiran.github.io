@@ -1,5 +1,5 @@
 languageCode: en-us
-baseURL: "http://alpertaskiran.github.io/atb-log"
+baseURL: "http://alpertaskiran.github.io"
 title: 21st centuary AI
 paginate: 5
 theme: hugo-PaperMod
