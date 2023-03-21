@@ -1,12 +1,72 @@
-title: "21st centuary AI"
-name: "Another Tech Blog"
-author: Alper Taskiran
-baseurl: "/atb-log"
-description: "L&F"
-profile_url: "http://alpertaskiran.github.io"
 languageCode: en-us
-title: My New Hugo Site
-module:
-  imports:
-  - path: github.com/adityatelange/hugo-PaperMod
-theme: "PaperMod"
+baseURL: "http://alpertaskiran.github.io/atb-log"
+title: 21st centuary AI
+paginate: 5
+theme: hugo-PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+
+minify:
+    disableXML: true
+
+
+       
+params:
+    showToc: true
+    TocOpen: false
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: true
+    hideMeta: false
+    defaultTheme: auto
+    
+    
+    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    
+    profileMode:
+      enabled: true
+      title: "Alper Taskiran"
+      subtitle: "Hi I am a computer"
+#       imageUrl: "home/me.jpg"
+#       imageWidth: 220
+#       imageHeight: 220
+      # buttons:
+      #   - name: Resume
+      #     url: ""
+      
+        # List View
+  hideDescriptionInList: false
+
+  # cover image for posts
+  cover:
+    hiddenInList: false # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+    
+#     title: Another Tech Blog
+#     author: Alper Taskiran
+#     description: "L&F"
+#     baseURL: "http://alpertaskiran.github.io/atb-log"
+#     languageCode: en-us
+#     title: My New Hugo Site
+#     module:
+#       imports:
+#       - path: github.com/adityatelange/hugo-PaperMod
+#     theme: "PaperMod"
+    
+# for search using Fuse.js  
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
+        
+# allow HTML in MD
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
