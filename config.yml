@@ -1,4 +1,9 @@
-baseURL: http://example.org/
+title: "21st centuary AI"
+name: "Another Tech Blog"
+author: Alper Taskiran
+baseurl: "/atb-log"
+description: "L&F"
+profile_url: "http://alpertaskiran.github.io"
 languageCode: en-us
 title: My New Hugo Site
 module:
