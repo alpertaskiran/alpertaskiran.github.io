@@ -13,10 +13,6 @@ enableEmoji: true
 pygmentsUseClasses: true
 # googleAnalytics: UA-123-45
 
-minify:
-    disableXML: true
-    # minifyOutput: true
-
 outputs:
     home:
         - HTML
