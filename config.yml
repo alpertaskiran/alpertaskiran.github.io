@@ -1,5 +1,5 @@
 languageCode: en-us
-baseURL: "http://alpertaskiran.github.io"
+baseURL: "https://alpertaskiran.github.io"
 title: 21st centuary AI
 paginate: 5
 theme: hugo-PaperMod
