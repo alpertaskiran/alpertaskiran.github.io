@@ -6,6 +6,8 @@ theme: PaperMod
 
 minify:
     disableXML: true
+enableEmoji: true
+pygmentsUseClasses: true
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -21,7 +23,6 @@ params:
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: true
     ShowToc: true
-    # comments: true
 
     homeInfoParams:
         Title: "Welcome to Alper's Blog"
@@ -48,9 +49,9 @@ menu:
       name: Projects
       url: /projects/
       weight: 2
-    - identifier: infographics
-      name: Infographics
-      url: /infographics/
+    - identifier: archive
+      name: Archive
+      url: /archives/
       weight: 3
 
 markup:
@@ -61,10 +62,6 @@ markup:
         noClasses: false
 
 privacy:
-    vimeo:
-        disabled: false
-        simple: true
-
     twitter:
         disabled: false
         enableDNT: true
