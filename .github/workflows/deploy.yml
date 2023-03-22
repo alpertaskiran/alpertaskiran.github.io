@@ -1,5 +1,6 @@
+# Github Actions deploy workflow
 
-name: Deploy Hugo PaperMod Demo to Pages
+name: deploy to github pages
 
 on:
   push:
