@@ -1,21 +1,17 @@
 languageCode: en-us
-baseURL: "https://alpertaskiran.github.io/"
+# baseURL: "https://alpertaskiran.github.io/"
 title: 21st centuary AI
 paginate: 5
 theme: PaperMod
 
-enableInlineShortcodes: true
-enableRobotsTXT: true
-buildDrafts: false
-buildFuture: false
-buildExpired: false
-enableEmoji: true
-pygmentsUseClasses: true
-# googleAnalytics: UA-123-45
-
-minify:
-    disableXML: true
-    # minifyOutput: true
+# enableInlineShortcodes: true
+# enableRobotsTXT: true
+# buildDrafts: false
+# buildFuture: false
+# buildExpired: false
+# enableEmoji: true
+# pygmentsUseClasses: true
+# # googleAnalytics: UA-123-45
 
 outputs:
     home:
@@ -25,8 +21,8 @@ outputs:
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
-    author: Theme PaperMod
+#     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
+    author: Alper
     # author: ["Me", "You"] # multiple authors
 
     defaultTheme: auto
@@ -41,7 +37,7 @@ params:
     ShowRssButtonInSectionTermList: true
     ShowToc: true
     # comments: false
-    images: ["papermod-cover.png"]
+#     images: ["papermod-cover.png"]
 
     profileMode:
         enabled: True
@@ -56,13 +52,13 @@ params:
             - name: Tags
               url: tags
 
-    homeInfoParams:
-        Title: "PaperMod"
-        Content: >
-            Welcome to demo of hugo's theme PaperMod.
-            - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
-            - Do give a 🌟 on Github !
-            - PaperMod is based on theme.
+#     homeInfoParams:
+#         Title: "PaperMod"
+#         Content: >
+#             Welcome to demo of hugo's theme PaperMod.
+#             - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
+#             - Do give a 🌟 on Github !
+#             - PaperMod is based on theme.
 #     socialIcons:
 #         - name: github
 #           url: "https://github.com/adityatelange/hugo-PaperMod"
