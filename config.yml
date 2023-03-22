@@ -9,6 +9,12 @@ minify:
 enableEmoji: true
 pygmentsUseClasses: true
 
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
+
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Alper"
@@ -31,35 +37,37 @@ params:
     socialIcons:
         - name: github
           url: "https://github.com/alpertaskiran"
+        - name: linkedin
+          url: https://www.linkedin.com/in/alper-taskiran-52588a1b9/
 
     assets:
         disableHLJS: true
+    fuseOpts:
+        isCaseSensitive: false
+        shouldSort: true
+        location: 0
+        distance: 1000
+        threshold: 0.4
+        minMatchCharLength: 0
+        keys: ["title", "permalink", "summary", "content"]
         
 menu:
   main:
-    - identifier: about
-      name: About
-      url: /about/
-      weight: 4
-    - identifier: blog
-      name: Blogs
-      url: /blogs/
-      weight: 1
-    - identifier: projects
-      name: Projects
-      url: /projects/
-      weight: 2
     - identifier: archive
       name: Archive
       url: /archives/
-      weight: 3
+      weight: 1
+    - name: Tags
+      url: tags/
+      weight: 2
 
 markup:
     goldmark:
         renderer:
             unsafe: true
     highlight:
-        noClasses: false
+        noClasses: true
+        style: monokai
 
 privacy:
     twitter:
