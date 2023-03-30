@@ -42,6 +42,7 @@ params:
 
     assets:
         disableHLJS: true
+
     fuseOpts:
         isCaseSensitive: false
         shouldSort: true
@@ -55,7 +56,7 @@ menu:
   main:
     - identifier: post
       name: Posts
-      url: https://alpertaskiran.github.io/post/
+      url: https://alpertaskiran.github.io
       weight: 1 
     - identifier: archive
       name: Archive
@@ -64,6 +65,10 @@ menu:
     - name: Tags
       url: tags/
       weight: 3
+    - identifier: Search
+      name: Search
+      url : /search/
+      weight : 4
 
 markup:
     goldmark:
