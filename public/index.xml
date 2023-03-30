@@ -5,7 +5,17 @@
     <link>https://alpertaskiran.github.io/</link>
     <description>Recent content on Another Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://alpertaskiran.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Mar 2023 11:13:24 +0100</lastBuildDate><atom:link href="https://alpertaskiran.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown and first post</title>
+      <link>https://alpertaskiran.github.io/posts/mark_down/</link>
+      <pubDate>Wed, 22 Mar 2023 11:13:24 +0100</pubDate>
+      
+      <guid>https://alpertaskiran.github.io/posts/mark_down/</guid>
+      <description>Sample article showcasing basic Markdown syntax and formatting for HTML elements.</description>
+    </item>
+    
     
     
   </channel>
