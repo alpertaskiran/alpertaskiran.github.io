@@ -53,13 +53,17 @@ params:
         
 menu:
   main:
+    - identifier: post
+      name: Posts
+      url: https://alpertaskiran.github.io/post/
+      weight: 1 
     - identifier: archive
       name: Archive
       url: /archives/
-      weight: 1
+      weight: 2
     - name: Tags
       url: tags/
-      weight: 2
+      weight: 3
 
 markup:
     goldmark:
