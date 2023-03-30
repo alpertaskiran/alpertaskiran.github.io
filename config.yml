@@ -58,7 +58,7 @@ menu:
   main:
     - identifier: post
       name: Posts
-      url: https://alpertaskiran.github.io
+      url: /
       weight: 1 
     - identifier: archive
       name: Archive
