@@ -21,14 +21,16 @@ params:
     author: Theme PaperMod
 
     defaultTheme: auto
-    ShowShareButtons: true
+    ShowShareButtons: false
     ShowReadingTime: true
     displayFullLangName: true
     ShowPostNavLinks: true
     ShowBreadCrumbs: true
     ShowCodeCopyButtons: true
-    ShowRssButtonInSectionTermList: true
+    ShowRssButtonInSectionTermList: false
     ShowToc: true
+    hideMeta: true
+    hideFooter: true
 
     homeInfoParams:
         Title: "Welcome to Alper's Blog"
