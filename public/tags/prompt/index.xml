@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Another Tech Blog</title>
-    <link>https://alpertaskiran.github.io/</link>
-    <description>Recent content on Another Tech Blog</description>
+    <title>prompt on Another Tech Blog</title>
+    <link>https://alpertaskiran.github.io/tags/prompt/</link>
+    <description>Recent content in prompt on Another Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Mar 2023 17:25:24 +0100</lastBuildDate><atom:link href="https://alpertaskiran.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Mar 2023 17:25:24 +0100</lastBuildDate><atom:link href="https://alpertaskiran.github.io/tags/prompt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LLM&#39;s Langchain and Prompt engineering</title>
       <link>https://alpertaskiran.github.io/posts/llm/</link>
@@ -15,8 +15,6 @@
       <guid>https://alpertaskiran.github.io/posts/llm/</guid>
       <description>NLP stuff loading.</description>
     </item>
-    
-    
     
   </channel>
 </rss>

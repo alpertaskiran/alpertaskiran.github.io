@@ -3,7 +3,7 @@ title: "Markdown and first post"
 date: '2023-03-22T11:13:24+01:00'
 description: "Sample article showcasing basic Markdown syntax and formatting for HTML elements."
 tags: ["markdown", "css", "html", "themes"]
-draft: false
+draft: true
 math: true
 ---
 

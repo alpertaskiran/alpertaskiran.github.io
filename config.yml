@@ -35,7 +35,7 @@ params:
     homeInfoParams:
         Title: "Welcome to Alper's Blog"
         Content: >
-            Hi, this is Alper. I'm documenting my learnings and findings in this blog. 
+            Hi, this is Alper. I'm documenting my learnings and findings in this blog.  
     socialIcons:
         - name: github
           url: "https://github.com/alpertaskiran"
