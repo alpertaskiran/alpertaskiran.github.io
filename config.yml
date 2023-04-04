@@ -35,7 +35,9 @@ params:
     homeInfoParams:
         Title: "Welcome to Alper's Blog"
         Content: >
-            Hi, this is Alper. I'm documenting my learnings and findings in this blog.  
+            Hi, this is Alper. I'm documenting my learnings and findings in this blog.
+            I cover a range of topics, from the basics of machine learning and reinforcement learning to advanced ML applications;
+            exploring the intersection of theory and technology.
     socialIcons:
         - name: github
           url: "https://github.com/alpertaskiran"

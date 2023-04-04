@@ -16,5 +16,14 @@
       <description>NLP stuff loading.</description>
     </item>
     
+    <item>
+      <title>First!</title>
+      <link>https://alpertaskiran.github.io/posts/first_post/</link>
+      <pubDate>Wed, 29 Mar 2023 14:20:24 +0100</pubDate>
+      
+      <guid>https://alpertaskiran.github.io/posts/first_post/</guid>
+      <description>Hello World!</description>
+    </item>
+    
   </channel>
 </rss>
