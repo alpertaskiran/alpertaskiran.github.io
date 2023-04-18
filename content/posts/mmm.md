@@ -1,5 +1,5 @@
 ---
-title: "Bayesian MMM — Media Mix Modelling"
+title: "Bayesian Media Mix Modelling"
 date: '2023-04-18T17:25:24+01:00'
 description: "Bayesian application for Media mix modeling"
 tags: ["bayesian", "marketing",]
