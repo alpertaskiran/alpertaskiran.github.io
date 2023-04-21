@@ -6,7 +6,18 @@
     <description>Recent content on Another Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Mar 2023 17:25:24 +0100</lastBuildDate><atom:link href="https://alpertaskiran.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Apr 2023 16:57:42 +0200</lastBuildDate><atom:link href="https://alpertaskiran.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bayesian Mix Media Model</title>
+      <link>https://alpertaskiran.github.io/posts/mmm/</link>
+      <pubDate>Tue, 18 Apr 2023 16:57:42 +0200</pubDate>
+      
+      <guid>https://alpertaskiran.github.io/posts/mmm/</guid>
+      <description>#WIP #TODO:images,formating github repo: https://github.com/alpertaskiran/bayesian_mmm
+Model This work is based on Jin, Yuxue, et al (2017) in which they provided a Bayesian mixed media model with carryover and shape effect. As it is described in the case study I avoided modeling ad stock shape effects with saturation or diminishing returns. For the sake of completeness, I will define the problem:
+Time series data with $y$ target variable (revenue), channel spending $x$ and control variables $z$ captures trend and seasonality.</description>
+    </item>
+    
     <item>
       <title>LLM&#39;s Langchain and Prompt engineering</title>
       <link>https://alpertaskiran.github.io/posts/llm/</link>

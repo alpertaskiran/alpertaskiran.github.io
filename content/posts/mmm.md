@@ -6,7 +6,7 @@ math: true
 ---
 
 #WIP
-
+#TODO:images,formating
 github repo: https://github.com/alpertaskiran/bayesian_mmm
 
 ### Model
@@ -22,9 +22,7 @@ Ad stock function takes as input media spends for a given media during  L weeks,
 ### Seasonality and Trend
  
 Employing Seasonal-Trend decomposition using LOWESS (locally estimated weighted scatterplot smoothing). For log of target value and setting seasonal to 7 results in lowest residual. This supports the need of additive modeling of seasonality and trend. The idea is to make a matrix of Fourier features which get multiplied by a vector of coefficients to to capture the seasonality. Number of order to create fourier pairs will be 7 (14 new features). Trend will be modeled as linear function.
-![[Pasted image 20230417122140.png|400x350]] 
 This is further supported by a periodogram where drop after bi-monthly can be seen from the figure below.
-![[Pasted image 20230417122545.png|400x350]]
 
 ### Likelihood and Prior distributions 
 
@@ -37,20 +35,16 @@ I use a $HalfNormal(1)$ distribution for the media coefficients to ensure they a
 ### Model validation
 
 Prior predictive checks make use of simulations from the model. Range is limited to but suggesting negative revenue especially in the initial points should be investigated further. Additional data to support initiation could be effective.
-![[Pasted image 20230417163630.png|350x350]]
 
 It is important to validate the model to ensure that it is reliable and accurate. This can be done by by using posterior predictive checks. Posterior predictive checking also allows one to examine the fit of a model to real data. We see that some extreme values can not be captured. 
-![[Pasted image 20230417163715.png|350x350]]
 
 ### Channel performance
 
 Channel 3 , Channel 7, Channel 6 contributions are highest to revenue. It is followed by Channel 4, Channel 5. Lowest contributions are from Channel 2, Channel 1 (see notebook) Further we observe that delay parameters have high HDI range and fail to converge. This could further improved by using saturation function. We also observe that the Channel 3 (coeff =0.376), Channel 7 (coeff = 320) and Channel 6 (coeff =305 ) has highest average contribution by unit spending. It is followed by Channel 2( coeff = (0.225))
-![[Pasted image 20230417175142.png|500x300]]
 
 ### Model Comparison
 
 We can check the difference with respect to using normal distributed likelihood. To evaluate model performance and to measure it we will use Pareto smoothed importance sampling leave-one-out cross-validation (LOO).  We see that our initial model performs better. 
-![[Pasted image 20230417172151.png]]
 
 Further diagnostics can be applied by checking residuals of the model. For each MCMC draw of posterior samples of the parameters we should compute autocorrelation of the residuals of the regression model as suggested by[1] Since this is our main model assumption.
 
