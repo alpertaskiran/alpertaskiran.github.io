@@ -36,13 +36,13 @@ params:
         Title: "Welcome to Alper's Blog"
         Content: >
             Hi, this is Alper. I'm documenting my learnings and findings in this blog.
-            I cover a range of topics, from the basics of machine learning and reinforcement learning to advanced ML applications;
+            I cover a range of topics, from the basics of machine learning and reinforcement learning to Bayesian modeling;
             exploring the intersection of theory and technology.
     socialIcons:
         - name: github
           url: "https://github.com/alpertaskiran"
         - name: linkedin
-          url: https://www.linkedin.com/in/alper-taskiran-52588a1b9/
+          url: https://www.linkedin.com/in/alpertaskiran/
 
     assets:
         disableHLJS: true
