@@ -8,12 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 30 Mar 2023 17:25:24 +0100</lastBuildDate><atom:link href="https://alpertaskiran.github.io/tags/words/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>LLM&#39;s Langchain and Prompt engineering</title>
+      <title>LLM, Langchain and Prompt Engineering</title>
       <link>https://alpertaskiran.github.io/posts/llm/</link>
       <pubDate>Thu, 30 Mar 2023 17:25:24 +0100</pubDate>
       
       <guid>https://alpertaskiran.github.io/posts/llm/</guid>
-      <description>NLP stuff loading.</description>
+      <description>Yesterday we used to say NLP. Today we say LLM.</description>
     </item>
     
   </channel>

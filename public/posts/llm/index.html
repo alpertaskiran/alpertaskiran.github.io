@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>LLM&#39;s Langchain and Prompt engineering | Another Tech Blog</title>
-<meta name="keywords" content="nlp, prompt, words, questions">
-<meta name="description" content="NLP stuff loading.">
+<title>LLM, Langchain and Prompt Engineering | Another Tech Blog</title>
+<meta name="keywords" content="nlp, prompt, words, questions, LLM">
+<meta name="description" content="Yesterday we used to say NLP. Today we say LLM.">
 <meta name="author" content="Theme PaperMod">
 <link rel="canonical" href="https://alpertaskiran.github.io/posts/llm/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.dc96e9e0118e5e264a03d68b104df6ae869cfb73c61f5f89dd91aeb16b0d8c03.css" integrity="sha256-3Jbp4BGOXiZKA9aLEE32roac&#43;3PGH1&#43;J3ZGusWsNjAM=" rel="preload stylesheet" as="style">
@@ -69,16 +69,16 @@
         });
     });
     </script>
-<meta property="og:title" content="LLM&#39;s Langchain and Prompt engineering" />
-<meta property="og:description" content="NLP stuff loading." />
+<meta property="og:title" content="LLM, Langchain and Prompt Engineering" />
+<meta property="og:description" content="Yesterday we used to say NLP. Today we say LLM." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://alpertaskiran.github.io/posts/llm/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-30T17:25:24+01:00" />
 <meta property="article:modified_time" content="2023-03-30T17:25:24+01:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="LLM&#39;s Langchain and Prompt engineering"/>
-<meta name="twitter:description" content="NLP stuff loading."/>
+<meta name="twitter:title" content="LLM, Langchain and Prompt Engineering"/>
+<meta name="twitter:description" content="Yesterday we used to say NLP. Today we say LLM."/>
 
 
 <script type="application/ld+json">
@@ -95,7 +95,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "LLM's Langchain and Prompt engineering",
+      "name": "LLM, Langchain and Prompt Engineering",
       "item": "https://alpertaskiran.github.io/posts/llm/"
     }
   ]
@@ -105,14 +105,14 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "LLM's Langchain and Prompt engineering",
-  "name": "LLM\u0027s Langchain and Prompt engineering",
-  "description": "NLP stuff loading.",
+  "headline": "LLM, Langchain and Prompt Engineering",
+  "name": "LLM, Langchain and Prompt Engineering",
+  "description": "Yesterday we used to say NLP. Today we say LLM.",
   "keywords": [
-    "nlp", "prompt", "words", "questions"
+    "nlp", "prompt", "words", "questions", "LLM"
   ],
-  "articleBody": "#WIP\nrepo:https://python.langchain.com/en/latest/index.html\n",
-  "wordCount" : "2",
+  "articleBody": "Time is relative. When did you have your last burger? 1-2 weeks ago? What about the ML course that you took at the Uni? Is it still relevant? Then you must have been to that course while having that last burger. (No Animals Were Harmed!)\nToday the topic is LLMs and how to find the right size for you.\nWhere and how to fit Large Language Models: In-house or Third-party? LLMs have become increasingly popular in various industries, as they can automate tasks, improve efficiency, and provide valuable insights. However, businesses must carefully consider whether to use an in-house language model or an API from a third-party provider. Before indulging into technicalities such as differences between pre-trained models and fine-tuning using transfer learning etc. Let’s draw a framework to understand the pros \u0026 cons:\nPros \u0026 Cons Factors such as cost, scalability, customization, and privacy should be taken into account to determine the best approach for your specific needs.\nI want it in my fridge! Using an API like OpenAI means that you’ll share your data with OpenAI. OpenAI’s current policy says they will not use user data to train or improve their models unless you explicitly opt in, but many people are still concerned [1]. Data ownership would enable increased privacy and security, as sensitive data stays in-house.\nThe ability to customize the model to specific business needs is another advantage. Complete control over the model and its development can ensure scalability and easier modifications.\nWhen it comes to serving your clients what you are concerned about is inference cost. Building your own might be seen as potential cost savings in the long term since API fees can add up over time. APIs are expensive, but this cost might go down fast.\nSir, you have a message! Knock Knock! Who is there? It is Bill. Bill who? Bill to pay the cost.\nBuilding an LLM requires significant resources, including expertise in machine learning and computational power. Moreover, it is a time-consuming development process which in the end you are risking limited scalability, as the model’s capacity depends on the organization’s infrastructure.\nWhen it comes to serving your clients there is also the risk of bias in the model if not developed and tested properly. At this point, I am not claiming that current models that one can access with API do not have any bias. I am just saying that it is easier to blame the Other. Having an in-house LLM means that you’ll be responsible for any output it generates, including any toxic content. OpenAI, Anthropic, and DeepMind have spent years researching how to make their LLMs less harmful.\nI find it interesting that the realaiblity of these API are not questioned enough. Since it is known that OpenAI already has a list of countries they don’t support. In theory, OpenAI can decide to stop supporting your country, your industry, or just your company. This is a risk to solemnly rely your core business on API connections.\nOn the other hand, let’s take the sunny road. Integration with API is quick and easy to implement. You would need reduced resources, including expertise in machine learning and computational power. It is also scalable, as the API provider can handle increased capacity. I believe one most crucial points is that since we are experiencing an exponential stage of technological improvements, regular updates and improvements to the model are for free.\nOn these dimensions, one needs to evaluate the relevancy of their situation to find the right integration to further their delivery. But, for the sake of the continuation of this topic, I will make a showcase using Langchain.\nLangchain? Is it something like blockchain? TODO: Bring the tools guys. We are building something cool! [2]\nReferences [1] https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance [2] https://python.langchain.com/en/latest/index.html\n",
+  "wordCount" : "630",
   "inLanguage": "en",
   "datePublished": "2023-03-30T17:25:24+01:00",
   "dateModified": "2023-03-30T17:25:24+01:00",
@@ -205,15 +205,69 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://alpertaskiran.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://alpertaskiran.github.io/posts/">Posts</a></div>
     <h1 class="post-title">
-      LLM&#39;s Langchain and Prompt engineering
+      LLM, Langchain and Prompt Engineering
     </h1>
     <div class="post-description">
-      NLP stuff loading.
+      Yesterday we used to say NLP. Today we say LLM.
     </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
 
-  <div class="post-content"><p>#WIP</p>
-<p>repo:https://python.langchain.com/en/latest/index.html</p>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#where-and-how-to-fit-large-language-models-in-house-or-third-party" aria-label="Where and how to fit Large Language Models: In-house or Third-party?">Where and how to fit Large Language Models: In-house or Third-party?</a><ul>
+                        
+                <li>
+                    <a href="#pros--cons" aria-label="Pros &amp;amp; Cons">Pros &amp; Cons</a><ul>
+                        
+                <li>
+                    <a href="#i-want-it-in-my-fridge" aria-label="I want it in my fridge!">I want it in my fridge!</a></li>
+                <li>
+                    <a href="#sir-you-have-a-message" aria-label="Sir, you have a message!">Sir, you have a message!</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#langchain-is-it-something-like-blockchain" aria-label="Langchain? Is it something like blockchain?">Langchain? Is it something like blockchain?</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#references" aria-label="References">References</a>
+                </li>
+            </ul>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Time is relative. When did you have your last burger? 1-2 weeks ago? What about the ML course that you took at the Uni? Is it still relevant? Then you must have been to that course while having that last burger. (No Animals Were Harmed!)</p>
+<p>Today the topic is LLMs and how to find the right size for you.</p>
+<h1 id="where-and-how-to-fit-large-language-models-in-house-or-third-party">Where and how to fit Large Language Models: In-house or Third-party?<a hidden class="anchor" aria-hidden="true" href="#where-and-how-to-fit-large-language-models-in-house-or-third-party">#</a></h1>
+<p>LLMs have become increasingly popular in various industries, as they can automate tasks, improve efficiency, and provide valuable insights. However, businesses must carefully consider whether to use an in-house language model or an API from a third-party provider. Before indulging into technicalities such as differences between pre-trained models and fine-tuning using transfer learning etc. Let&rsquo;s draw a framework to understand the pros &amp; cons:</p>
+<h2 id="pros--cons">Pros &amp; Cons<a hidden class="anchor" aria-hidden="true" href="#pros--cons">#</a></h2>
+<p>Factors such as cost, scalability, customization, and privacy should be taken into account to determine the best approach for your specific needs.</p>
+<p><img loading="lazy" src="/images/llm/tellmesth.png" alt="Mirror Mirror!"  />
+</p>
+<h3 id="i-want-it-in-my-fridge">I want it in my fridge!<a hidden class="anchor" aria-hidden="true" href="#i-want-it-in-my-fridge">#</a></h3>
+<p>Using an API like OpenAI means that you’ll share your data with OpenAI. OpenAI’s current policy says they will not use user data to train or improve their models unless you explicitly opt in, but many people are still concerned [1]. Data ownership would enable increased privacy and security, as sensitive data stays in-house.</p>
+<p>The ability to customize the model to specific business needs is another advantage. Complete control over the model and its development can ensure scalability and easier modifications.</p>
+<p>When it comes to serving your clients what you are concerned about is inference cost. Building your own might be seen as potential cost savings in the long term since API fees can add up over time. APIs are expensive, but this cost might go down fast.</p>
+<h3 id="sir-you-have-a-message">Sir, you have a message!<a hidden class="anchor" aria-hidden="true" href="#sir-you-have-a-message">#</a></h3>
+<p>Knock Knock! Who is there? It is Bill. Bill who? Bill to pay the cost.</p>
+<p>Building an LLM requires significant resources, including expertise in machine learning and computational power. Moreover, it is a time-consuming development process which in the end you are risking limited scalability, as the model&rsquo;s capacity depends on the organization&rsquo;s infrastructure.</p>
+<p>When it comes to serving your clients there is also the risk of bias in the model if not developed and tested properly. At this point, I am not claiming that current models that one can access with API do not have any bias. I am just saying that it is easier to blame the Other. Having an in-house LLM means that you’ll be responsible for any output it generates, including any toxic content. OpenAI, Anthropic, and DeepMind have spent years researching how to make their LLMs less harmful.</p>
+<p>I find it interesting that the realaiblity of these API are not questioned enough. Since it is known that OpenAI already has a list of countries they don’t support. In theory, OpenAI can decide to stop supporting your country, your industry, or just your company. This is a risk to solemnly rely your core business on API connections.</p>
+<p>On the other hand, let&rsquo;s take the sunny road. Integration with API is quick and easy to implement. You would need reduced resources, including expertise in machine learning and computational power. It is also scalable, as the API provider can handle increased capacity. I believe one most crucial points is that since we are experiencing an exponential stage of technological improvements, regular updates and improvements to the model are for free.</p>
+<p>On these dimensions, one needs to evaluate the relevancy of their situation to find the right integration to further their delivery. But, for the sake of the continuation of this topic, I will make a showcase using Langchain.</p>
+<h1 id="langchain-is-it-something-like-blockchain">Langchain? Is it something like blockchain?<a hidden class="anchor" aria-hidden="true" href="#langchain-is-it-something-like-blockchain">#</a></h1>
+<p>TODO: Bring the tools guys. We are building something cool! [2]</p>
+<h3 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h3>
+<p>[1] <a href="https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance">https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance</a>
+[2] <a href="https://python.langchain.com/en/latest/index.html">https://python.langchain.com/en/latest/index.html</a></p>
 
 
   </div>
@@ -224,12 +278,13 @@
       <li><a href="https://alpertaskiran.github.io/tags/prompt/">prompt</a></li>
       <li><a href="https://alpertaskiran.github.io/tags/words/">words</a></li>
       <li><a href="https://alpertaskiran.github.io/tags/questions/">questions</a></li>
+      <li><a href="https://alpertaskiran.github.io/tags/llm/">LLM</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://alpertaskiran.github.io/posts/mmm/">
     <span class="title">« Prev</span>
     <br>
-    <span>Bayesian Mix Media Model</span>
+    <span>Bayesian Mix Media Modeling</span>
   </a>
   <a class="next" href="https://alpertaskiran.github.io/posts/first_post/">
     <span class="title">Next »</span>

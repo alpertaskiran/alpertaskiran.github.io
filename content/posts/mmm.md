@@ -1,13 +1,20 @@
 ---
-title: "Bayesian Mix Media Model"
+title: "Bayesian Mix Media Modeling"
 date: 2023-04-18T16:57:42+02:00
 draft: false
 math: true
 ---
 
-#WIP
-#TODO:images,formating
-github repo: https://github.com/alpertaskiran/bayesian_mmm
+
+In this post, I will dwell on something essential to the success of any decision-making. 
+
+### How to measure the success of a given decision? 
+
+To measure the success of a given decision, businesses can use various metrics and key performance indicators (KPIs) to track the effectiveness of their decisions. It's important to choose the right metrics that align with your business goals and use them consistently over time to measure progress and identify areas for improvement.
+
+## Particularly,
+
+Let's assume you are a driven entrepreneur optimizing every cent you are spending to get the best of the best outcome. For instance, you are running a marketing campaign on various channels such as Social Media, Flyers, Radio, etc. And one can also assume that your main concern at this point is the raised revenue as much as possible with spending on advertisements on different channels. How can you know the most effective channels to continue to invest in ROI.
 
 ### Model
 
@@ -48,12 +55,17 @@ We can check the difference with respect to using normal distributed likelihood.
 
 Further diagnostics can be applied by checking residuals of the model. For each MCMC draw of posterior samples of the parameters we should compute autocorrelation of the residuals of the regression model as suggested by[1] Since this is our main model assumption.
 
+
+
+github repo: https://github.com/alpertaskiran/bayesian_mmm
+TODO: add images and compute autocorrelation of residuals
+
 ### References:
 
-1) [Jin, Yuxue, et al. “Bayesian methods for media mix modeling with carryover and shape effects.” (2017)](https://research.google/pubs/pub46001/)
+[1] [Jin, Yuxue, et al. “Bayesian methods for media mix modeling with carryover and shape effects.” (2017)](https://research.google/pubs/pub46001/)
 
-2) [Gelman, Andrew, et al. “Bayesian Workflow.” ArXiv.org, 3 Nov. 2020](https://arxiv.org/abs/2011.01808)
+[2] [Gelman, Andrew, et al. “Bayesian Workflow.” ArXiv.org, 3 Nov. 2020](https://arxiv.org/abs/2011.01808)
 
-3) PyMC-Marketing : https://github.com/pymc-labs/pymc-marketing
+[3] PyMC-Marketing : https://github.com/pymc-labs/pymc-marketing
 
-4) Media effect estimation with pymc: Adstock, saturation & diminishing returns. Dr. Juan Camilo Orduz. (2022, February 11). Retrieved April 17, 2023, from [https://juanitorduz.github.io/pymc_mmm/](https://juanitorduz.github.io/pymc_mmm/)
+[4] Media effect estimation with pymc: Adstock, saturation & diminishing returns. Dr. Juan Camilo Orduz. (2022, February 11). Retrieved April 17, 2023, from [https://juanitorduz.github.io/pymc_mmm/](https://juanitorduz.github.io/pymc_mmm/)
