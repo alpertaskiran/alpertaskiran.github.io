@@ -9,17 +9,28 @@ math: true
 
 In this post, I will dwell on something essential to the success of any decision-making. 
 
-### How to measure the success of a given decision? 
+# How to measure the success of a given decision? 
 
 To measure the success of a given decision, businesses can use various metrics and key performance indicators (KPIs) to track the effectiveness of their decisions. It's important to choose the right metrics that align with your business goals and use them consistently over time to measure progress and identify areas for improvement.
 
 ## Particularly,
 
-Let's assume you are a driven entrepreneur optimizing every cent you are spending to get the best of the best outcome. For instance, you are running a marketing campaign on various channels such as Social Media, Flyers, Radio, etc. And one can also assume that your main concern at this point is the raised revenue as much as possible with spending on advertisements on different channels. How can you know the most effective channels to continue to invest in ROI.
+Let's assume you are a driven entrepreneur optimizing every cent you are spending to get the best of the best outcome. For instance, you are running a marketing campaign on various channels such as Social Media, Flyers, Radio, etc. And one can also assume that your main concern at this point is to raise the revenue as much as possible with spending on advertisements on different channels. How can you know the most effective channels that generates revenue for your business?
+
+### MMM
+
+Media Mix Modeling (MMM) is a marketing approach that models the effects of different channels on sales. MMM problems involve channel-specific effects like delays, saturation, and long-term effects that are modeled through different parameters. Classical MMMs require assumptions about media channel behavior to assess each channel's contribution to sales through linear regression. 
+
+The Bayesian MMM approach offers an all-in-one estimation of both channel behavior and sales lift through prior distributions and data. MMM involves nonlinear transformations such as saturation and time-delay. The aim of incorporating nonlinear transformations to marketing investment features is to capture the anticipated actions from media channels that cannot be represented through linear mappings.
+
+By utilizing the Bayesian approach, it is possible to estimate all the parameters (both regression and nonlinear) in a single model, which can incorporate information as prior knowledge to achieve optimal performance even when there is a lack of data. This approach avoids incorrect and unchangeable assumptions if past channel-specific studies were not performed. Qualitative and quantitative business knowledge can be translated into tailored prior distributions to optimize the model's performance. Prior knowledge can be included as prior distributions to help the model find a sensible parameter combination.
+
+Choosing the prior distribution for the parameter can be seen as your prior belief regarding to effect on the target. If you are not sure of the impact on the target variable, you can feed it an uninformed prior (e.g. the standard normal distribution) for that variable and let the model learn it by itself.
+
 
 ### Model
 
-This work is based on [Jin, Yuxue, et al (2017)](https://research.google/pubs/pub46001/) in which they provided a Bayesian mixed media model with carryover and shape effect. As it is described in the case study I avoided modeling ad stock shape effects with saturation or diminishing returns. For the sake of completeness, I will define the problem:
+This work is based on [Jin, Yuxue, et al (2017)](https://research.google/pubs/pub46001/) in which they provided a Bayesian mixed media model with carryover and shape effect. I avoided modeling ad stock shape effects with saturation or diminishing returns. For the sake of completeness, I will define the problem:
 
 ![|left](https://lh3.googleusercontent.com/rV1UvxY5yob9VpoPAKjuuqJzxpGinvIPoWTuRpiehwmX__b35S-sDXzO9h1US8Md4vXJaSTDcjmeJAWcWXzkYEHB0aAzNuSSTdylE-jjzmqtBbVL2qGwmZfYsC3uCy1VHF8Pw3aWNZhiLCh-7t9yTFo)
 
