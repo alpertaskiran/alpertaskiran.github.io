@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>LLM, Langchain and Prompt Engineering Pt.1 | Another Tech Blog</title>
+<meta name="keywords" content="nlp, prompt, words, questions, LLM">
+<meta name="description" content="Yesterday we used to say NLP. Today we say LLM.">
+<meta name="author" content="Theme PaperMod">
+<link rel="canonical" href="https://alpertaskiran.github.io/posts/llm_1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.dc96e9e0118e5e264a03d68b104df6ae869cfb73c61f5f89dd91aeb16b0d8c03.css" integrity="sha256-3Jbp4BGOXiZKA9aLEE32roac&#43;3PGH1&#43;J3ZGusWsNjAM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://alpertaskiran.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alpertaskiran.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alpertaskiran.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://alpertaskiran.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://alpertaskiran.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+    </script>
+<meta property="og:title" content="LLM, Langchain and Prompt Engineering Pt.1" />
+<meta property="og:description" content="Yesterday we used to say NLP. Today we say LLM." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alpertaskiran.github.io/posts/llm_1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-30T17:25:24+01:00" />
+<meta property="article:modified_time" content="2023-03-30T17:25:24+01:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LLM, Langchain and Prompt Engineering Pt.1"/>
+<meta name="twitter:description" content="Yesterday we used to say NLP. Today we say LLM."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://alpertaskiran.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "LLM, Langchain and Prompt Engineering Pt.1",
+      "item": "https://alpertaskiran.github.io/posts/llm_1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LLM, Langchain and Prompt Engineering Pt.1",
+  "name": "LLM, Langchain and Prompt Engineering Pt.1",
+  "description": "Yesterday we used to say NLP. Today we say LLM.",
+  "keywords": [
+    "nlp", "prompt", "words", "questions", "LLM"
+  ],
+  "articleBody": "Time is relative. When did you have your last burger? 1-2 weeks ago? What about the ML course that you took at the Uni? Is it still relevant? Then you must have been to that course while having that last burger. (No Animals Were Harmed!)\nToday the topic is LLMs and how to find the right size for you.\nWhere and how to fit Large Language Models: In-house or Third-party? LLMs have become increasingly popular in various industries, as they can automate tasks, improve efficiency, and provide valuable insights. However, businesses must carefully consider whether to use an in-house language model or an API from a third-party provider. Before indulging into technicalities such as differences between pre-trained models and fine-tuning using transfer learning etc. Let’s draw a framework to understand the pros \u0026 cons:\nPros \u0026 Cons Factors such as cost, scalability, customization, and privacy should be taken into account to determine the best approach for your specific needs.\nI want it in my fridge! Using an API like OpenAI means that you’ll share your data with OpenAI. OpenAI’s current policy says they will not use user data to train or improve their models unless you explicitly opt in, but many people are still concerned [1]. Data ownership would enable increased privacy and security, as sensitive data stays in-house.\nThe ability to customize the model to specific business needs is another advantage. Complete control over the model and its development can ensure scalability and easier modifications.\nWhen it comes to serving your clients what you are concerned about is inference cost. Building your own might be seen as potential cost savings in the long term since API fees can add up over time. APIs are expensive, but this cost might go down fast.\nSir, you have a message! Knock Knock! Who is there? It is Bill. Bill who? Bill to pay.\nBuilding an LLM requires significant resources, including expertise in machine learning and computational power. Moreover, it is a time-consuming development process which in the end you are risking limited scalability, as the model’s capacity depends on the organization’s infrastructure.\nWhen it comes to serving your clients there is also the risk of bias in the model if not developed and tested properly. At this point, I am not claiming that current models that one can access with API do not have any bias. I am just saying that it is easier to blame the Other. Having an in-house LLM means that you’ll be responsible for any output it generates, including any toxic content.\nI find it interesting that the realaiblity of these API are not questioned enough. Since it is known that OpenAI already has a list of countries they don’t support. In theory, OpenAI can decide to stop supporting your country, your industry, or just your company. This is a risk to solemnly rely your core business on API connections.\nOn the other hand, let’s take the sunny road. Integration with API is quick and easy to implement. You would need reduced resources, including expertise in machine learning and computational power. It is also scalable, as the API provider can handle increased capacity. I believe one most crucial points is that since we are experiencing an exponential stage of technological improvements, regular updates and improvements to the model are for free.\nOn these dimensions, one needs to evaluate the relevancy of their situation to find the right integration to further their delivery. But, for the sake of the continuation of this topic, I will make a showcase using Langchain.\nLangchain? Is it something like blockchain? TODO: Bring the tools guys. We are building something cool! [2]\nReferences [1] https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance [2] https://python.langchain.com/en/latest/index.html\n",
+  "wordCount" : "613",
+  "inLanguage": "en",
+  "datePublished": "2023-03-30T17:25:24+01:00",
+  "dateModified": "2023-03-30T17:25:24+01:00",
+  "author":{
+    "@type": "Person",
+    "name": "Theme PaperMod"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://alpertaskiran.github.io/posts/llm_1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Another Tech Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://alpertaskiran.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://alpertaskiran.github.io/" accesskey="h" title="Another Tech Blog (Alt + H)">Another Tech Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://alpertaskiran.github.io/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://alpertaskiran.github.io/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://alpertaskiran.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://alpertaskiran.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://alpertaskiran.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://alpertaskiran.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      LLM, Langchain and Prompt Engineering Pt.1
+    </h1>
+    <div class="post-description">
+      Yesterday we used to say NLP. Today we say LLM.
+    </div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#where-and-how-to-fit-large-language-models-in-house-or-third-party" aria-label="Where and how to fit Large Language Models: In-house or Third-party?">Where and how to fit Large Language Models: In-house or Third-party?</a><ul>
+                        
+                <li>
+                    <a href="#pros--cons" aria-label="Pros &amp;amp; Cons">Pros &amp; Cons</a><ul>
+                        
+                <li>
+                    <a href="#i-want-it-in-my-fridge" aria-label="I want it in my fridge!">I want it in my fridge!</a></li>
+                <li>
+                    <a href="#sir-you-have-a-message" aria-label="Sir, you have a message!">Sir, you have a message!</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#langchain-is-it-something-like-blockchain" aria-label="Langchain? Is it something like blockchain?">Langchain? Is it something like blockchain?</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#references" aria-label="References">References</a>
+                </li>
+            </ul>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Time is relative. When did you have your last burger? 1-2 weeks ago? What about the ML course that you took at the Uni? Is it still relevant? Then you must have been to that course while having that last burger. (No Animals Were Harmed!)</p>
+<p>Today the topic is LLMs and how to find the right size for you.</p>
+<h1 id="where-and-how-to-fit-large-language-models-in-house-or-third-party">Where and how to fit Large Language Models: In-house or Third-party?<a hidden class="anchor" aria-hidden="true" href="#where-and-how-to-fit-large-language-models-in-house-or-third-party">#</a></h1>
+<p>LLMs have become increasingly popular in various industries, as they can automate tasks, improve efficiency, and provide valuable insights. However, businesses must carefully consider whether to use an in-house language model or an API from a third-party provider. Before indulging into technicalities such as differences between pre-trained models and fine-tuning using transfer learning etc. Let&rsquo;s draw a framework to understand the pros &amp; cons:</p>
+<h2 id="pros--cons">Pros &amp; Cons<a hidden class="anchor" aria-hidden="true" href="#pros--cons">#</a></h2>
+<p>Factors such as cost, scalability, customization, and privacy should be taken into account to determine the best approach for your specific needs.</p>
+<p><img loading="lazy" src="/images/llm/tellmesth.png" alt="Mirror Mirror!"  />
+</p>
+<h3 id="i-want-it-in-my-fridge">I want it in my fridge!<a hidden class="anchor" aria-hidden="true" href="#i-want-it-in-my-fridge">#</a></h3>
+<p>Using an API like OpenAI means that you’ll share your data with OpenAI. OpenAI’s current policy says they will not use user data to train or improve their models unless you explicitly opt in, but many people are still concerned [1]. Data ownership would enable increased privacy and security, as sensitive data stays in-house.</p>
+<p>The ability to customize the model to specific business needs is another advantage. Complete control over the model and its development can ensure scalability and easier modifications.</p>
+<p>When it comes to serving your clients what you are concerned about is inference cost. Building your own might be seen as potential cost savings in the long term since API fees can add up over time. APIs are expensive, but this cost might go down fast.</p>
+<h3 id="sir-you-have-a-message">Sir, you have a message!<a hidden class="anchor" aria-hidden="true" href="#sir-you-have-a-message">#</a></h3>
+<p>Knock Knock! Who is there? It is Bill. Bill who? Bill to pay.</p>
+<p>Building an LLM requires significant resources, including expertise in machine learning and computational power. Moreover, it is a time-consuming development process which in the end you are risking limited scalability, as the model&rsquo;s capacity depends on the organization&rsquo;s infrastructure.</p>
+<p>When it comes to serving your clients there is also the risk of bias in the model if not developed and tested properly. At this point, I am not claiming that current models that one can access with API do not have any bias. I am just saying that it is easier to blame the Other. Having an in-house LLM means that you’ll be responsible for any output it generates, including any toxic content.</p>
+<p>I find it interesting that the realaiblity of these API are not questioned enough. Since it is known that OpenAI already has a list of countries they don’t support. In theory, OpenAI can decide to stop supporting your country, your industry, or just your company. This is a risk to solemnly rely your core business on API connections.</p>
+<p>On the other hand, let&rsquo;s take the sunny road. Integration with API is quick and easy to implement. You would need reduced resources, including expertise in machine learning and computational power. It is also scalable, as the API provider can handle increased capacity. I believe one most crucial points is that since we are experiencing an exponential stage of technological improvements, regular updates and improvements to the model are for free.</p>
+<p>On these dimensions, one needs to evaluate the relevancy of their situation to find the right integration to further their delivery. But, for the sake of the continuation of this topic, I will make a showcase using Langchain.</p>
+<h1 id="langchain-is-it-something-like-blockchain">Langchain? Is it something like blockchain?<a hidden class="anchor" aria-hidden="true" href="#langchain-is-it-something-like-blockchain">#</a></h1>
+<p>TODO: Bring the tools guys. We are building something cool! [2]</p>
+<h3 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h3>
+<p>[1] <a href="https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance">https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance</a>
+[2] <a href="https://python.langchain.com/en/latest/index.html">https://python.langchain.com/en/latest/index.html</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://alpertaskiran.github.io/tags/nlp/">nlp</a></li>
+      <li><a href="https://alpertaskiran.github.io/tags/prompt/">prompt</a></li>
+      <li><a href="https://alpertaskiran.github.io/tags/words/">words</a></li>
+      <li><a href="https://alpertaskiran.github.io/tags/questions/">questions</a></li>
+      <li><a href="https://alpertaskiran.github.io/tags/llm/">LLM</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://alpertaskiran.github.io/posts/mmm/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Bayesian Mix Media Modeling</span>
+  </a>
+  <a class="next" href="https://alpertaskiran.github.io/posts/first_post/">
+    <span class="title">Next »</span>
+    <br>
+    <span>First!</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

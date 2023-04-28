@@ -1,5 +1,5 @@
 ---
-title: "LLM, Langchain and Prompt Engineering"
+title: "LLM, Langchain and Prompt Engineering Pt.1"
 date: '2023-03-30T17:25:24+01:00'
 description: "Yesterday we used to say NLP. Today we say LLM."
 tags: ["nlp", "prompt", "words", "questions","LLM"]
@@ -33,11 +33,11 @@ When it comes to serving your clients what you are concerned about is inference 
 
 ### Sir, you have a message!
 
-Knock Knock! Who is there? It is Bill. Bill who? Bill to pay the cost.
+Knock Knock! Who is there? It is Bill. Bill who? Bill to pay.
 
 Building an LLM requires significant resources, including expertise in machine learning and computational power. Moreover, it is a time-consuming development process which in the end you are risking limited scalability, as the model's capacity depends on the organization's infrastructure.
 
-When it comes to serving your clients there is also the risk of bias in the model if not developed and tested properly. At this point, I am not claiming that current models that one can access with API do not have any bias. I am just saying that it is easier to blame the Other. Having an in-house LLM means that you’ll be responsible for any output it generates, including any toxic content. OpenAI, Anthropic, and DeepMind have spent years researching how to make their LLMs less harmful.
+When it comes to serving your clients there is also the risk of bias in the model if not developed and tested properly. At this point, I am not claiming that current models that one can access with API do not have any bias. I am just saying that it is easier to blame the Other. Having an in-house LLM means that you’ll be responsible for any output it generates, including any toxic content.
 
 I find it interesting that the realaiblity of these API are not questioned enough. Since it is known that OpenAI already has a list of countries they don’t support. In theory, OpenAI can decide to stop supporting your country, your industry, or just your company. This is a risk to solemnly rely your core business on API connections.
 

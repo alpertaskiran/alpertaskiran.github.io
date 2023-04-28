@@ -1,10 +1,11 @@
 ---
 title: "Bayesian Mix Media Modeling"
 date: 2023-04-18T16:57:42+02:00
+description: "Bayesian way of doing things!"
+tags: ["bayes", "marketing", "MMM", "modeling","time-series"]
 draft: false
 math: true
 ---
-
 
 In this post, I will dwell on something essential to the success of any decision-making. 
 
@@ -21,9 +22,12 @@ Let's assume you are a driven entrepreneur optimizing every cent you are spendin
 This work is based on [Jin, Yuxue, et al (2017)](https://research.google/pubs/pub46001/) in which they provided a Bayesian mixed media model with carryover and shape effect. As it is described in the case study I avoided modeling ad stock shape effects with saturation or diminishing returns. For the sake of completeness, I will define the problem:
 
 ![|left](https://lh3.googleusercontent.com/rV1UvxY5yob9VpoPAKjuuqJzxpGinvIPoWTuRpiehwmX__b35S-sDXzO9h1US8Md4vXJaSTDcjmeJAWcWXzkYEHB0aAzNuSSTdylE-jjzmqtBbVL2qGwmZfYsC3uCy1VHF8Pw3aWNZhiLCh-7t9yTFo)
+
 Time series data with $y$ target variable (revenue), channel spending $x$ and control variables $z$ captures trend and seasonality. $t = 1 \dots T$ . There are $M$ media channels in the media mix, and $x_{t,m}$ is the media spend of channel $m$ at week $t$ It is considered a linear model of the form where $\tau$ is the intercept capturing baseline sales, and $\epsilon$ capturing noise is assumed to be uncorrelated with other variables and have constant variance. $f$ is the ad stock function:
+
 ![[Pasted image 20230417093241.png|center]]
 ![|right](https://lh5.googleusercontent.com/TRlVRfwJuE7c5W27-EV_kTFXtSgMUSeo2DNs5NeUOjw1mALIsaC1DB9mGrcyiV7vPssDj-vyAAvJ1NMWlt74e6HkHSAzLXKa1jRLGnqYa9_dQhB_ZeDLo4i4RtFf6n7fiaDq6V9pWH3BDJZYVVFcMv8)
+
 Ad stock function takes as input media spends for a given media during  L weeks, the retain-rate and the delay of the peak. The delay is the number of periods before the peak effect. The ad stock function is responsible for capturing the temporal effects of diverse advertising channels. $\alpha_{m}$ representing the retention rate of ad effect  and $\theta_{m}$ represents the delay in the peak effect of the $m$-th channel. $L$ is the maximum time period that delay can incur effect and it is set to be 13.  
 
 ### Seasonality and Trend
@@ -37,7 +41,7 @@ The prior distribution represents the beliefs or assumptions you have about the 
 
 Selecting the likelihood function: The likelihood function describes the relationship between the data and the parameters of the model. Choosing an appropriate likelihood function is critical to accurately model the data. $\alpha \backsim Beta(3,3)$, $\theta \backsim Uniform(0,12)$, $\gamma \backsim Laplace(0,1)$ for the fourier coefficient to add certain regularization, $\tau \backsim Normal(0,1)$ additionally trend has a coefficient with $~Normal(0,1)$  
 
-I use a $HalfNormal(1)$ distribution for the media coefficients to ensure they are positive. Main model I used for the likelihood function is a StudentT distribution which is  robust against outliers as suggested by this[4] with the precision prior parameter $\nu \backsim Gamme(15,1)$ It is suggested by [4]] to use MaxAbsScaler which is convenient to use due to transformation while calculation ROAS.
+I use a $HalfNormal(1)$ distribution for the media coefficients to ensure they are positive. Main model I used for the likelihood function is a StudentT distribution which is  robust against outliers as suggested by this[4] with the precision prior parameter $\nu \backsim Gamme(15,1)$ It is suggested by [4] to use MaxAbsScaler which is convenient to use due to transformation while calculation ROAS.
 
 ### Model validation
 
@@ -54,8 +58,6 @@ Channel 3 , Channel 7, Channel 6 contributions are highest to revenue. It is fol
 We can check the difference with respect to using normal distributed likelihood. To evaluate model performance and to measure it we will use Pareto smoothed importance sampling leave-one-out cross-validation (LOO).  We see that our initial model performs better. 
 
 Further diagnostics can be applied by checking residuals of the model. For each MCMC draw of posterior samples of the parameters we should compute autocorrelation of the residuals of the regression model as suggested by[1] Since this is our main model assumption.
-
-
 
 github repo: https://github.com/alpertaskiran/bayesian_mmm
 TODO: add images and compute autocorrelation of residuals
