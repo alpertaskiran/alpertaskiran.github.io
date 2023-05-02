@@ -66,12 +66,11 @@ The likelihood function describes the relationship between the data and the para
 
 Prior predictive checks make use of simulations from the model. Range is limited to but suggesting negative revenue especially in the initial points should be investigated further. Additional data to support initiation could be effective.
 
-
 ![Model prior](/images/mmm/prior_predictive.png)
 
 It is important to validate the model to ensure that it is reliable and accurate. This can be done by by using posterior predictive checks. Posterior predictive checking also allows one to examine the fit of a model to real data. We see that some extreme values can not be captured. 
 
-[Model posterior](/images/mmm/ppsterior_predictive.png)
+![Model posterior](/images/mmm/posterior_predictive.png)
 
 ### Channel performance
 
@@ -84,7 +83,7 @@ We can check the difference with respect to using normal distributed likelihood.
 Further diagnostics can be applied by checking residuals of the model. For each MCMC draw of posterior samples of the parameters we should compute autocorrelation of the residuals of the regression model as suggested by[1] Since this is our main model assumption.
 
 github repo: https://github.com/alpertaskiran/bayesian_mmm
-TODO: compute autocorrelation of residuals
+TODO: compute autocorrelation of residuals, implement ROAS
 
 ### References:
 
