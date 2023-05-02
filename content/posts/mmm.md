@@ -1,7 +1,7 @@
 ---
 title: "Bayesian Mix Media Modeling"
 date: 2023-04-18T16:57:42+02:00
-description: "Bayesian way of doing things!"
+description: "Bayesian way of marketing!"
 tags: ["bayes", "marketing", "MMM", "modeling","time-series"]
 draft: false
 math: true
@@ -23,42 +23,55 @@ Media Mix Modeling (MMM) is a marketing approach that models the effects of diff
 
 The Bayesian MMM approach offers an all-in-one estimation of both channel behavior and sales lift through prior distributions and data. MMM involves nonlinear transformations such as saturation and time-delay. The aim of incorporating nonlinear transformations to marketing investment features is to capture the anticipated actions from media channels that cannot be represented through linear mappings.
 
-By utilizing the Bayesian approach, it is possible to estimate all the parameters (both regression and nonlinear) in a single model, which can incorporate information as prior knowledge to achieve optimal performance even when there is a lack of data. This approach avoids incorrect and unchangeable assumptions if past channel-specific studies were not performed. Qualitative and quantitative business knowledge can be translated into tailored prior distributions to optimize the model's performance. Prior knowledge can be included as prior distributions to help the model find a sensible parameter combination.
+By utilizing the Bayesian approach, it is possible to estimate all the parameters (both regression and nonlinear interaction) in a single model, which can incorporate information as prior knowledge to achieve optimal performance even when there is a lack of data. This approach avoids incorrect and unchangeable assumptions if past channel-specific studies were not performed. Qualitative and quantitative business knowledge can be translated into tailored prior distributions to optimize the model's performance. Prior knowledge can be included as prior distributions to help the model find a sensible parameter combination.
 
-Choosing the prior distribution for the parameter can be seen as your prior belief regarding to effect on the target. If you are not sure of the impact on the target variable, you can feed it an uninformed prior (e.g. the standard normal distribution) for that variable and let the model learn it by itself.
-
+Choosing the prior distribution for the parameters can be seen as your prior belief regarding to effect on the target. If you are not sure of the impact on the target variable, you can feed it an uninformed prior (e.g. the standard normal distribution) for that variable and let the model learn it by itself.
 
 ### Model
 
 This work is based on [Jin, Yuxue, et al (2017)](https://research.google/pubs/pub46001/) in which they provided a Bayesian mixed media model with carryover and shape effect. I avoided modeling ad stock shape effects with saturation or diminishing returns. For the sake of completeness, I will define the problem:
 
-![|left](https://lh3.googleusercontent.com/rV1UvxY5yob9VpoPAKjuuqJzxpGinvIPoWTuRpiehwmX__b35S-sDXzO9h1US8Md4vXJaSTDcjmeJAWcWXzkYEHB0aAzNuSSTdylE-jjzmqtBbVL2qGwmZfYsC3uCy1VHF8Pw3aWNZhiLCh-7t9yTFo)
+$y_{t} = \tau + \sum_{m=1}^{M} \beta_{m} f(x_{t,m};w) + \sum_{c=1}^{C} \gamma_{c}z_{t,c}+\epsilon_{t}$
 
-Time series data with $y$ target variable (revenue), channel spending $x$ and control variables $z$ captures trend and seasonality. $t = 1 \dots T$ . There are $M$ media channels in the media mix, and $x_{t,m}$ is the media spend of channel $m$ at week $t$ It is considered a linear model of the form where $\tau$ is the intercept capturing baseline sales, and $\epsilon$ capturing noise is assumed to be uncorrelated with other variables and have constant variance. $f$ is the ad stock function:
+Time series data with $y$ target variable (revenue), channel spending $x$ and control variables $z$ captures trend and seasonality. In time period $t = 1 \dots T$. There are $M$ media channels in the media mix, and $x_{t,m}$ is the media spend of channel $m$ at week $t$ It is considered a linear model of the form where $\tau$ is the intercept capturing baseline sales, and $\epsilon$ capturing noise is assumed to be uncorrelated with other variables and have constant variance. $f$ is the ad stock function:
 
-![[Pasted image 20230417093241.png|center]]
-![|right](https://lh5.googleusercontent.com/TRlVRfwJuE7c5W27-EV_kTFXtSgMUSeo2DNs5NeUOjw1mALIsaC1DB9mGrcyiV7vPssDj-vyAAvJ1NMWlt74e6HkHSAzLXKa1jRLGnqYa9_dQhB_ZeDLo4i4RtFf6n7fiaDq6V9pWH3BDJZYVVFcMv8)
+$f(x,w_{m},L) = \frac{\sum_{l=0}^{L-1} w_m(l;\alpha_{m},\theta_{m}) x_{t-l,m}}{\sum_{l=0}^{L-1} w_m(l)}$ 
+
+$w_m(l,\alpha_m,\theta_m)=\alpha_{m}^{(l-\theta_m)^2}$
 
 Ad stock function takes as input media spends for a given media during  L weeks, the retain-rate and the delay of the peak. The delay is the number of periods before the peak effect. The ad stock function is responsible for capturing the temporal effects of diverse advertising channels. $\alpha_{m}$ representing the retention rate of ad effect  and $\theta_{m}$ represents the delay in the peak effect of the $m$-th channel. $L$ is the maximum time period that delay can incur effect and it is set to be 13.  
+
 
 ### Seasonality and Trend
  
 Employing Seasonal-Trend decomposition using LOWESS (locally estimated weighted scatterplot smoothing). For log of target value and setting seasonal to 7 results in lowest residual. This supports the need of additive modeling of seasonality and trend. The idea is to make a matrix of Fourier features which get multiplied by a vector of coefficients to to capture the seasonality. Number of order to create fourier pairs will be 7 (14 new features). Trend will be modeled as linear function.
+![Seasonality and Trend](/images/mmm/time_series_seasonality.png)
+
 This is further supported by a periodogram where drop after bi-monthly can be seen from the figure below.
+
+![Periodagram](/images/mmm/periodagram.png)
+
 
 ### Likelihood and Prior distributions 
 
-The prior distribution represents the beliefs or assumptions you have about the variables before analyzing the data. Starting point for the choice of priors is following the work done by [Jin, Yuxue, et al (2017)](https://research.google/pubs/pub46001/). Parameter optimization is avoided but one can further it using Bayesian model selection criteria.
+The prior distribution represents the beliefs or assumptions you have about the variables before analyzing the data. Starting point for the choice of priors is following the work done by [Jin, Yuxue, et al (2017)](https://research.google/pubs/pub46001/). Parameter optimization is avoided for now but one can further it using Bayesian model selection criteria. $\alpha \backsim Beta(3,3)$, $\theta \backsim Uniform(0,12)$, $\gamma \backsim Laplace(0,1)$ for the fourier coefficient to add certain regularization, $\tau \backsim Normal(0,1)$ additionally trend has a coefficient with $~Normal(0,1)$  
 
-Selecting the likelihood function: The likelihood function describes the relationship between the data and the parameters of the model. Choosing an appropriate likelihood function is critical to accurately model the data. $\alpha \backsim Beta(3,3)$, $\theta \backsim Uniform(0,12)$, $\gamma \backsim Laplace(0,1)$ for the fourier coefficient to add certain regularization, $\tau \backsim Normal(0,1)$ additionally trend has a coefficient with $~Normal(0,1)$  
+I use a $HalfNormal(1)$ distribution for the media coefficients to ensure they are positive.
 
-I use a $HalfNormal(1)$ distribution for the media coefficients to ensure they are positive. Main model I used for the likelihood function is a StudentT distribution which is  robust against outliers as suggested by this[4] with the precision prior parameter $\nu \backsim Gamme(15,1)$ It is suggested by [4] to use MaxAbsScaler which is convenient to use due to transformation while calculation ROAS.
+The likelihood function describes the relationship between the data and the parameters of the model. Choosing an appropriate likelihood function is critical to accurately model the data. Main model I used for the likelihood function is a StudentT distribution which is  robust against outliers as suggested by [4] with the precision prior parameter $\nu \backsim Gamme(15,1)$. It is suggested by [4] to use MaxAbsScaler which is convenient to use due to transformation while calculation ROAS.
+
+![Model](/images/mmm/model_specification.png)
 
 ### Model validation
 
 Prior predictive checks make use of simulations from the model. Range is limited to but suggesting negative revenue especially in the initial points should be investigated further. Additional data to support initiation could be effective.
 
+
+![Model prior](/images/mmm/prior_predictive.png)
+
 It is important to validate the model to ensure that it is reliable and accurate. This can be done by by using posterior predictive checks. Posterior predictive checking also allows one to examine the fit of a model to real data. We see that some extreme values can not be captured. 
+
+[Model posterior](/images/mmm/ppsterior_predictive.png)
 
 ### Channel performance
 
@@ -71,7 +84,7 @@ We can check the difference with respect to using normal distributed likelihood.
 Further diagnostics can be applied by checking residuals of the model. For each MCMC draw of posterior samples of the parameters we should compute autocorrelation of the residuals of the regression model as suggested by[1] Since this is our main model assumption.
 
 github repo: https://github.com/alpertaskiran/bayesian_mmm
-TODO: add images and compute autocorrelation of residuals
+TODO: compute autocorrelation of residuals
 
 ### References:
 
